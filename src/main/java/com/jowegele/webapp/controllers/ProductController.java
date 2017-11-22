@@ -1,6 +1,9 @@
 package com.jowegele.webapp.controllers;
 
 import com.jowegele.webapp.domain.Product;
+import com.jowegele.webapp.repositories.ProductRepository;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,13 +21,16 @@ import javax.servlet.http.HttpServletRequest;
 @Controller
 public class ProductController{
 
-    @RequestMapping("/product/list")
-    public String listProducts(Model model, HttpServletRequest request){
+    private ProductRepository repository;
 
-        ApplicationContext ctx = WebApplicationContextUtils.getWebApplicationContext(request.getServletContext());
-        EntityManagerFactory emf = ctx.getBean(EntityManagerFactory.class);
-        EntityManager em = emf.createEntityManager();
-        model.addAttribute("products", em.createQuery("from Product", Product.class).getResultList());
+    @Autowired
+    public ProductController(ProductRepository repository){
+        this.repository = repository;
+    }
+
+    @RequestMapping("/product/list")
+    public String listProducts(Model model){
+        model.addAttribute("products", repository.findAll());
         return "product/list";
     }
 }
