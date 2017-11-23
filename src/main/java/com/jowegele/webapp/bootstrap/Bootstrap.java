@@ -31,6 +31,10 @@ public class Bootstrap implements ApplicationListener<ContextRefreshedEvent>{
 
     @Override
     public void onApplicationEvent(ContextRefreshedEvent contextRefreshedEvent) {
+        /** a type we are implementing when we get a content refresh event this method is going to be called
+         *  a quick way for us to load up the content of the database
+         *  much cleaner nicer way/implementation
+         */
 
         Product product1 = new Product();
         product1.setDescription("Product 1");

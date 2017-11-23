@@ -15,7 +15,7 @@ import javax.persistence.EntityManagerFactory;
 import javax.servlet.http.HttpServletRequest;
 
 /**
- *
+ *  service-layer
  */
 
 @Controller
@@ -25,7 +25,7 @@ public class ProductController{
 
     @Autowired
     public ProductController(ProductRepository repository){
-        this.repository = repository;
+        this.repository = repository; //constructor for the repository
     }
 
     @RequestMapping("/product/list")

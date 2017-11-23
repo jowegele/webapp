@@ -5,6 +5,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 /**
  * JWG 2017-11-22
+ * "We wanna enable Spring repositories and show where they are at.
  */
 
 @Configuration
